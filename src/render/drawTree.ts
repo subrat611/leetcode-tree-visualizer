@@ -13,7 +13,7 @@ function renderTree(rootNode: TreeNode, canvasEle: HTMLCanvasElement | null) {
         canvasEle.height = windowHeight;
     }
 
-    const { nodeContainerHeight, nodeContainersWidth } = getTreeHeightWidth(rootNode);
+    const { nodeContainersWidth } = getTreeHeightWidth(rootNode);
 
     const windowCenter = windowWidth / 2;
     const nodeContainerWidthCenter = nodeContainersWidth / 2;
@@ -31,11 +31,10 @@ function getTreeHeightWidth(node: TreeNode) {
     const heightOfTree = node.getHeight();
     const maxLeafNodeAtLlevel = Math.pow(2, heightOfTree);
 
-    const nodeContainerHeight = heightOfTree * CONFIG.HEIGHT_SPACING;
+    // const nodeContainerHeight = heightOfTree * CONFIG.HEIGHT_SPACING;
     const nodeContainersWidth = maxLeafNodeAtLlevel * CONFIG.WIDTH_SPACING;
 
     return {
-        nodeContainerHeight,
         nodeContainersWidth
     };
 }
