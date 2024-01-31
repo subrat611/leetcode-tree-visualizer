@@ -28,6 +28,15 @@ Don't just run your test cases through your mind, visualize them instead! 😉
 
 ![coordinates](https://github.com/subrat611/leetcode-tree-visualizer/assets/77252075/b8185588-79f5-4c16-a1cb-8bf7904e397d)
 
+### Draw tree recursively
+
+#### Algorithm
+
+- Find the root node coordinates from `xStart` to `xEnd`.
+- Draw the root node on the coordinates found at `step 1`.
+- Recursively draw left & right nodes.
+- Connect edges of each nodes.
+
 ### 🔨 Technologies
 
 - `Vitejs` + `TypeScript`
