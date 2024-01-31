@@ -2,21 +2,87 @@ import TreeNode from "./data-structures/TreeNode";
 import renderTree from "./render/drawTree";
 
 const canvas = document.querySelector("canvas");
-const root = new TreeNode(10);
-const root1 = new TreeNode(12);
-root.setLeftNode(root1);
+const textArea = document.querySelector("textarea");
+const runBtn = document.querySelector("#run-btn");
+const clearBtn = document.querySelector("#clear-btn");
 
-const root2 = new TreeNode(13);
-root.setRightNode(root2);
+runBtn?.addEventListener("click", ()=> {
+
+    if(textArea?.value === "") return;
+
+    const root = constructTree();
+
+    renderTree(root, canvas)
+})
+
+clearBtn?.addEventListener("click", ()=> {
+    (textArea as HTMLTextAreaElement ).value = "";
+    const context = canvas?.getContext('2d');
+    context?.clearRect(0, 0, canvas!.width, canvas!.height)
+})
+
+function constructTree(): TreeNode {
+
+    let parsedInputArray = parseInput(textArea!.value);
+
+    const queue:TreeNode[] = [];
+    
+    let idx = 0;
+    const root = new TreeNode(parsedInputArray[idx]);
+    idx++;
+    
+    queue.push(root);
+
+    while(queue.length > 0 && idx < parsedInputArray.length) {
+        const currentNode = queue.shift();
+
+        // left child
+        if(idx < parsedInputArray.length) {
+            
+            if(parsedInputArray[idx] != null) {
+                const leftNode = new TreeNode(parsedInputArray[idx]);
+                currentNode?.setLeftNode(leftNode);
+                queue.push(leftNode);
+            }
+            idx++;
+        }
+
+        // right child
+        if(idx < parsedInputArray.length) {
+            
+            if(parsedInputArray[idx] != null) {
+                const rightNode = new TreeNode(parsedInputArray[idx]);
+                currentNode?.setRightNode(rightNode);
+                queue.push(rightNode);
+            }
+            idx++;
+        }
+    }
 
 
-const root3 = new TreeNode(13);
-root2.setRightNode(root3);
-root1.setLeftNode(root3);
+    return root;
+}
 
+function parseInput(input: string) {
+    let parsedInput = "";
 
-const root4 = new TreeNode(11);
-root2.setLeftNode(root4);
+    for(let i=0; i<input.length; i++) {
+        const ch = input.charAt(i);
 
+        if(ch !== ' ' && ch !== '[' && ch !== ']') parsedInput += ch;
+    }
 
-renderTree(root, canvas)
+    return parsedInput.split(',').map((ele)=> {
+        if(ele === 'null') return null;
+        return parseInt(ele);
+    })
+}
+
+window.addEventListener('resize', ()=> {
+    const context = canvas?.getContext('2d');
+    context?.clearRect(0, 0, canvas!.width, canvas!.height)
+
+    const root = constructTree();
+
+    renderTree(root, canvas)
+})
