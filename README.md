@@ -4,7 +4,7 @@ Don't just run your test cases through your mind, visualize them instead! 😉
 
 ### Decoding characteristics of tree
 
-- Drawing 2D tree graphic using HTML `canvas`.
+- Drawing 2D tree graphics using HTML `canvas`.
 
 ### Representing/rendering node logic
 
