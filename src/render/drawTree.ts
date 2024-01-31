@@ -104,13 +104,19 @@ function connectNodesEdge(canvasEle: HTMLCanvasElement | null, xCord: {xStart: n
     const start = { x: xStart, y: yStart };
     const end = { x: xEnd, y: yEnd };
 
+    const xHalf = (xStart + xEnd)/2;
+    const yHalf = (yStart + yEnd)/2;
+
+    const cp1 = { x: xHalf, y: yHalf };
+    const cp2 = { x: xEnd, y: yHalf };
 
     const context = canvasEle?.getContext("2d");
     context?.beginPath();
     (context as CanvasRenderingContext2D).strokeStyle = "#6a00f4";
     (context as CanvasRenderingContext2D).lineWidth = 2;
     context?.moveTo(start.x, start.y);
-    context?.lineTo(end.x, end.y);
+    context?.bezierCurveTo(cp1.x, cp1.y, cp2.x, cp2.y, end.x, end.y);
+    // context?.lineTo(end.x, end.y);
     context?.stroke();
 }
 
