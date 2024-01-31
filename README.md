@@ -14,7 +14,7 @@ Don't just run your test cases through your mind, visualize them instead! 😉
 
   ![image](https://github.com/subrat611/leetcode-tree-visualizer/assets/77252075/555648b9-17e1-47d1-ae83-6666001b7eb3)
 
-### Understanding canvas height and width with respect to tree
+### Understanding canvas height and width for tree
 
 - Height of the canvas
 
@@ -24,7 +24,7 @@ Don't just run your test cases through your mind, visualize them instead! 😉
 
   ![canvas-width](https://github.com/subrat611/leetcode-tree-visualizer/assets/77252075/50f839c2-ce94-4913-b7be-b8831358d9f7)
 
-### Calculate the coordinates for placing tree on screen
+### Calculate the coordinates for placing the tree on the screen
 
 ![coordinates](https://github.com/subrat611/leetcode-tree-visualizer/assets/77252075/b8185588-79f5-4c16-a1cb-8bf7904e397d)
 
