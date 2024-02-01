@@ -1,3 +1,5 @@
+import './style.css'
+
 import TreeNode from "./data-structures/TreeNode";
 import renderTree from "./render/drawTree";
 
